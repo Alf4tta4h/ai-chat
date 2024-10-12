@@ -14,6 +14,10 @@ AI Chat Application adalah sebuah aplikasi chat berbasis web yang memungkinkan p
 - Input suara untuk pesan
 - Ekspor chat ke format PDF
 - Tema yang dapat disesuaikan
+- Web preview untuk kode HTML, CSS, dan JavaScript
+
+![alt text](image-1.png)
+![alt text](image-2.png)
 
 ## Teknologi yang Digunakan
 
@@ -46,6 +50,16 @@ AI Chat Application adalah sebuah aplikasi chat berbasis web yang memungkinkan p
 ## Konfigurasi
 
 Untuk menggunakan aplikasi ini dengan penyedia AI yang berbeda, Anda perlu mengatur konfigurasi API di menu pengaturan aplikasi. Pastikan Anda memiliki API key yang valid untuk penyedia yang ingin Anda gunakan.
+
+## Fitur Web Preview
+
+Aplikasi ini memiliki fitur unik yang memungkinkan pengguna untuk melihat preview langsung dari kode HTML, CSS, dan JavaScript yang dihasilkan oleh AI. Ini sangat berguna untuk pengembang web yang ingin melihat hasil kode mereka secara instan.
+
+Cara menggunakan fitur Web Preview:
+1. Minta AI untuk menghasilkan kode HTML, CSS, atau JavaScript.
+2. Setelah kode muncul, Anda akan melihat ikon "Eye" di samping blok kode.
+3. Klik ikon tersebut untuk membuka preview kode dalam jendela baru.
+4. Preview akan memperbarui secara otomatis jika Anda meminta perubahan pada kode.
 
 ## Kontribusi
 
