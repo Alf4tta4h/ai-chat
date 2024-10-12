@@ -31,6 +31,7 @@ export interface Theme {
 const CHAT_HISTORY_KEY = 'chatHistory';
 const API_CONFIG_KEY = 'apiConfig';
 const CUSTOM_THEME_KEY = 'customTheme';
+const LANGUAGE_KEY = 'language';
 
 export const storage = {
   saveChatHistory: (history: ChatHistory[]) => {
@@ -77,5 +78,13 @@ export const storage = {
       console.error('Error loading custom theme:', error);
       return null;
     }
+  },
+
+  saveLanguage: (language: string) => {
+    localStorage.setItem(LANGUAGE_KEY, language);
+  },
+
+  loadLanguage: (): string | null => {
+    return localStorage.getItem(LANGUAGE_KEY);
   }
 };

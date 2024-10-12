@@ -10,6 +10,9 @@ interface SidebarProps {
   onDeleteChat: (chatId: string) => void;
   onOpenSettings: () => void;
   onExportChat: () => void;
+  newChatText: string;
+  settingsText: string;
+  exportChatText: string;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -19,7 +22,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onSwitchChat,
   onDeleteChat,
   onOpenSettings,
-  onExportChat
+  onExportChat,
+  newChatText,
+  settingsText,
+  exportChatText
 }) => {
   return (
     <div className="w-64 bolt-sidebar p-4 flex flex-col">
@@ -27,7 +33,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         onClick={onStartNewChat}
         className="bolt-button mb-4"
       >
-        Chat Baru
+        {newChatText}
       </button>
       <div className="flex-grow overflow-y-auto">
         {chatHistory.map((chat) => (
@@ -55,14 +61,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
           className="flex items-center space-x-2 hover:bg-[var(--color-hover)] rounded-md p-2 w-full"
         >
           <Settings className="w-5 h-5" />
-          <span>Pengaturan</span>
+          <span>{settingsText}</span>
         </button>
         <button
           onClick={onExportChat}
           className="flex items-center space-x-2 hover:bg-[var(--color-hover)] rounded-md p-2 w-full"
         >
           <Save className="w-5 h-5" />
-          <span>Ekspor Chat</span>
+          <span>{exportChatText}</span>
         </button>
       </div>
     </div>

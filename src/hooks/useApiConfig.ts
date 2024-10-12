@@ -5,9 +5,9 @@ export function useApiConfig() {
   const [apiConfig, setApiConfig] = useState<ApiConfig>(() => {
     const savedConfig = storage.loadApiConfig();
     return savedConfig || {
-      provider: 'ollama',
+      provider: 'openai',
       apiKey: '',
-      model: 'llama3.2:1b-instruct-fp16',
+      model: 'gpt-4o',
     };
   });
 

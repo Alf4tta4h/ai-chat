@@ -12,6 +12,7 @@ import { SettingsModal } from './components/SettingsModal';
 import { useChatHistory } from './hooks/useChatHistory';
 import { useApiConfig } from './hooks/useApiConfig';
 import { useCustomTheme } from './hooks/useCustomTheme';
+import { useLanguage } from './hooks/useLanguage';
 
 // Import bahasa-bahasa tambahan
 import js from 'react-syntax-highlighter/dist/esm/languages/prism/javascript';
@@ -83,6 +84,7 @@ function App() {
 
   const { apiConfig, setApiConfig } = useApiConfig();
   const { customTheme, setCustomTheme, applyCustomTheme, resetTheme } = useCustomTheme();
+  const { language, setLanguage } = useLanguage();
 
   const [isLoading, setIsLoading] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
@@ -93,6 +95,31 @@ function App() {
   const [isGenerating, setIsGenerating] = useState(false);
   const abortControllerRef = useRef<AbortController | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+  const translations = {
+    EN: {
+      newChat: "New Chat",
+      provider: "Provider",
+      model: "Model",
+      webPreview: "Web Preview",
+      openInNewTab: "Open in New Tab",
+      settings: "Settings",
+      exportChat: "Export Chat",
+      inputPlaceholder: "How can I help you?",
+    },
+    ID: {
+      newChat: "Chat Baru",
+      provider: "Penyedia",
+      model: "Model",
+      webPreview: "Pratinjau Web",
+      openInNewTab: "Buka di Tab Baru",
+      settings: "Pengaturan",
+      exportChat: "Ekspor Chat",
+      inputPlaceholder: "Ada yang bisa dibantu?",
+    }
+  };
+
+  const t = translations[language as keyof typeof translations];
 
   // Fungsi untuk menghasilkan judul otomatis
   const generateChatTitle = useCallback((messages: Message[]): string => {
@@ -542,12 +569,15 @@ function App() {
         onDeleteChat={deleteChat}
         onOpenSettings={() => setIsSettingsOpen(true)}
         onExportChat={exportChat}
+        newChatText={t.newChat}
+        settingsText={t.settings}
+        exportChatText={t.exportChat}
       />
 
       <div className="flex-1 flex flex-col bolt-chat-area">
         <div className="p-2 bg-[var(--color-secondary)] text-right text-sm">
-          <span className="mr-2">Provider: {apiConfig.provider}</span>
-          <span>Model: {apiConfig.model}</span>
+          <span className="mr-2">{t.provider}: {apiConfig.provider}</span>
+          <span>{t.model}: {apiConfig.model}</span>
         </div>
 
         <ChatArea
@@ -565,6 +595,7 @@ function App() {
           isGenerating={isGenerating}
           isListening={isListening}
           onStopGeneration={handleStopGeneration}
+          placeholderText={t.inputPlaceholder}
         />
       </div>
 
@@ -577,6 +608,8 @@ function App() {
         setCustomTheme={setCustomTheme}
         applyCustomTheme={applyCustomTheme}
         resetTheme={resetTheme}
+        language={language}
+        setLanguage={setLanguage}
       />
 
       {previewUrl && (
@@ -584,14 +617,14 @@ function App() {
           <div className="bg-white p-4 rounded-lg w-3/4 h-3/4 flex flex-col">
             <div className="flex justify-between items-center mb-4">
               <div className="flex items-center">
-                <h2 className="text-xl font-bold text-gray-800 mr-4">Web Preview</h2>
+                <h2 className="text-xl font-bold text-gray-800 mr-4">{t.webPreview}</h2>
                 <a
                   href={previewUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-600 hover:text-blue-800 underline"
                 >
-                  Buka di Tab Baru
+                  {t.openInNewTab}
                 </a>
               </div>
               <button
@@ -610,7 +643,7 @@ function App() {
         </div>
       )}
     </div>
-  ), [messages, isLoading, isGenerating, isListening, previewImage, previewUrl, isSettingsOpen, chatHistory, currentChatId, customTheme, apiConfig, startNewChat, switchChat, deleteChat, applyCustomTheme, resetTheme]);
+  ), [messages, isLoading, isGenerating, isListening, previewImage, previewUrl, isSettingsOpen, chatHistory, currentChatId, customTheme, apiConfig, startNewChat, switchChat, deleteChat, applyCustomTheme, resetTheme, language]);
 }
 
 

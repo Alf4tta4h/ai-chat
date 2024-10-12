@@ -10,6 +10,7 @@ interface InputAreaProps {
   isGenerating: boolean;
   isListening: boolean;
   onStopGeneration: () => void;
+  placeholderText: string;
 }
 
 export const InputArea: React.FC<InputAreaProps> = ({
@@ -21,6 +22,7 @@ export const InputArea: React.FC<InputAreaProps> = ({
   isGenerating,
   isListening,
   onStopGeneration,
+  placeholderText
 }) => {
   const [input, setInput] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -61,7 +63,7 @@ export const InputArea: React.FC<InputAreaProps> = ({
             value={input}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            placeholder="Ada yang bisa dibantu?"
+            placeholder={placeholderText}
             className="bolt-input resize-none overflow-hidden"
             style={{ minHeight: '40px', maxHeight: '200px' }}
             rows={1}
