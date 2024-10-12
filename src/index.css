@@ -1,0 +1,133 @@
+/* eslint-disable */
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-secondary: #0e0c0c;
+  --color-text: #ffffff;
+  --color-background: #121212;
+  --color-border: #0b7a9c;
+  --color-input-background: #121212;
+  --color-hover: #121212;
+  --color-message-user: #121212;
+  --color-message-assistant: #121212;
+  --color-code-background: #000000;
+}
+
+body {
+  @apply bg-[var(--color-background)] text-[var(--color-text)];
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[var(--color-secondary)];
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-[var(--color-border)];
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-[var(--color-hover)];
+}
+
+/* Ensure full height layout */
+#root {
+  height: 100vh;
+}
+
+/* Bolt-like styles */
+.bolt-button {
+  @apply bg-[var(--color-secondary)] text-[var(--color-text)] rounded-md py-2 px-4 hover:bg-[var(--color-hover)] transition-colors;
+}
+
+.bolt-input {
+  @apply w-full px-4 py-2 bg-[var(--color-input-background)] border border-[var(--color-border)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] text-[var(--color-text)];
+}
+
+.bolt-sidebar {
+  @apply bg-[var(--color-secondary)] border-r border-[var(--color-border)];
+}
+
+.bolt-chat-area {
+  @apply bg-[var(--color-background)];
+}
+
+.bolt-message-user {
+  background-color: var(--color-message-user);
+  color: var(--color-text);
+  align-self: flex-end;
+}
+
+.bolt-message-assistant {
+  background-color: var(--color-message-assistant);
+  color: var(--color-text);
+  align-self: flex-start;
+}
+
+/* Existing syntax highlighting styles */
+.language-javascript,
+.language-python,
+.language-html,
+.language-css {
+  @apply text-sm;
+}
+
+.language-javascript .keyword,
+.language-python .keyword {
+  @apply text-purple-400;
+}
+
+.language-javascript .string,
+.language-python .string {
+  @apply text-green-400;
+}
+
+.language-javascript .number,
+.language-python .number {
+  @apply text-orange-400;
+}
+
+.language-javascript .function,
+.language-python .function {
+  @apply text-blue-400;
+}
+
+.language-html .tag {
+  @apply text-blue-400;
+}
+
+.language-html .attr-name {
+  @apply text-orange-400;
+}
+
+.language-html .attr-value {
+  @apply text-green-400;
+}
+
+.language-css .property {
+  @apply text-blue-400;
+}
+
+.language-css .value {
+  @apply text-green-400;
+}
+
+/* ... (sisanya tetap sama) ... */
+
+/* Syntax highlighting styles */
+.syntax-highlighter {
+  background-color: var(--color-code-background) !important;
+}
+
+.syntax-highlighter code {
+  font-family: 'Fira Code', monospace !important;
+  font-size: 0.875rem !important;
+}

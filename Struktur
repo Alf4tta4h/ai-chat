@@ -1,0 +1,25 @@
+src/
+├── components/
+│   ├── ChatArea.tsx
+│   ├── InputArea.tsx
+│   ├── MessageList.tsx
+│   ├── SettingsModal.tsx
+│   └── Sidebar.tsx
+├── hooks/
+│   ├── useApiConfig.ts
+│   ├── useChatHistory.ts
+│   └── useCustomTheme.ts
+├── services/
+│   ├── geminiApi.ts
+│   └── storage.ts
+├── App.tsx
+├── index.css
+├── main.tsx
+└── vite-env.d.ts
+
+public/
+└── (aset publik jika ada)
+
+package.json
+tsconfig.json
+vite.config.ts
